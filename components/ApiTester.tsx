@@ -11,6 +11,7 @@ import { memo, useState } from 'react';
 const ApiTester = () => {
   const [expression, setExpression] = useState('');
   const [isInvalid, setIsInvalid] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [results, setResults] = useState<APIResponse>({
     status: 'idle',
     statusCode: 200,
@@ -20,6 +21,7 @@ const ApiTester = () => {
 
   const handleTest = async () => {
     setIsInvalid(false);
+    setIsSubmitting(true);
 
     try {
       const requestInit: RequestInit = {
@@ -51,6 +53,8 @@ const ApiTester = () => {
           'Unexpected error detected, please share this to the developer!',
         error: err,
       });
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -67,6 +71,7 @@ const ApiTester = () => {
           placeholder="Input an expression here..."
           isInvalid={isInvalid}
           aria-label="input-nlang-expression"
+          isDisabled={isSubmitting}
         />
 
         <InputRightElement width="4.5rem">
@@ -77,6 +82,8 @@ const ApiTester = () => {
             mr="1rem"
             px="1rem"
             size="xs"
+            isDisabled={isSubmitting}
+            isLoading={isSubmitting}
           >
             Submit
           </Button>
@@ -90,6 +97,7 @@ const ApiTester = () => {
         height="xs"
         isInvalid={isInvalid}
         aria-label="textarea-nlang-parsed"
+        isDisabled={isSubmitting}
         isReadOnly
       />
     </>
