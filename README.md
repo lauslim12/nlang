@@ -29,7 +29,7 @@ v18.16.0
 $ yarn --version
 1.22.19
 
-git clone
+git clone git@github.com:lauslim12/nlang.git
 ```
 
 - Install the application.
