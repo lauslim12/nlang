@@ -4,7 +4,7 @@ The prototype of Nlang Scripting Language, packed with intellisense code editor,
 
 ## Documentation
 
-For full documentation regarding the project, please visit the [website]() of the project. The complete, user-facing documentation is on that website and it describes everything about this project, starting from the reason why this project is created, the background, all features, how to use the grammar, the API and how to use it, and even the live code editor! For now, this `README.md` file consists of only developer-related documentation.
+For full documentation regarding the project, please visit the [website](https://nlang.vercel.app) of the project. The complete, user-facing documentation is on that website and it describes everything about this project, starting from the reason why this project is created, the background, all features, how to use the grammar, the API and how to use it, and even the live code editor! For now, this `README.md` file consists of only developer-related documentation.
 
 ## Requirements
 
