@@ -9,7 +9,14 @@ interface CodeBlockProps {
 // Markup inspiration: https://github.com/chakra-ui/chakra-ui/issues/2394#issuecomment-745092641
 const CodeBlock = ({ children }: CodeBlockProps) => {
   return (
-    <Code display="block" whiteSpace="pre" width="full" p={4} bg="#011627">
+    <Code
+      display="block"
+      whiteSpace="pre"
+      width="full"
+      p={4}
+      bg="#011627"
+      overflow="auto"
+    >
       {children}
     </Code>
   );
