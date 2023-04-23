@@ -22,7 +22,7 @@ const Layout = ({ children }: LayoutProps) => (
 
       <link rel="icon" type="image/png" href="/favicon.png" />
 
-      <title>Nlang Code Editor</title>
+      <title>Nlang Scripting Language</title>
     </Head>
 
     <Flex minH="100vh" minW="100vw" direction="column" px={[4, 6, 10]} py={3}>
