@@ -190,11 +190,26 @@ test('integrates with the API properly', async () => {
   };
 
   // Setup endpoints.
-  const success = rest.post('/api/parse', (_, res, ctx) => {
+  // TODO: All of these endpoints should take the request body and parse it properly.
+  // The reason why it wasn't done right now is because MSW doesn't support Node.js version 18,
+  // but ANTLR4 requires Node.js version 18 so it can work properly. In the future, the expected
+  // behavior of these functions are to get the request body and then return the translated Nlang
+  // to the user.
+  const success = rest.post('/api/parse', async (req, res, ctx) => {
+    const body = await req.json();
+    expect(body.expression).toBe(
+      `ADD INCOME 50000 "Received money from a lottery"`
+    );
+    expect(body).toMatchObject({ expression: expect.any(String) });
+
     return res(ctx.json<SuccessResponse>(expectedSuccessResponse));
   });
 
-  const failure = rest.post('/api/parse', (_, res, ctx) => {
+  const failure = rest.post('/api/parse', async (req, res, ctx) => {
+    const body = await req.json();
+    expect(body.expression).toBe('ADD EXPENSE 10');
+    expect(body).toMatchObject({ expression: expect.any(String) });
+
     return res(ctx.json<FailureResponse>(expectedFailureResponse));
   });
 
@@ -248,6 +263,9 @@ test('integrates with the API properly', async () => {
   expect(textareaResults).toHaveValue(
     JSON.stringify(expectedFailureResponse, null, 4)
   );
+
+  // Clear input.
+  await user.clear(textInput);
 
   // Console should not throw an error anymore.
   expect(consoleErrorMock).not.toBeCalled();
