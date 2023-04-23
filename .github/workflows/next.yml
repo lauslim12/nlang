@@ -29,7 +29,7 @@ jobs:
         run: yarn quality-check
 
       - name: Run integration tests
-        run: yarn test:ci
+        run: yarn test-ci
 
       - name: Build application
         run: yarn build
