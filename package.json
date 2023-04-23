@@ -1,0 +1,68 @@
+{
+  "name": "nlang",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Nlang Prototype and Nlang Code Editor",
+  "license": "MIT",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "test": "jest --watchAll",
+    "clean": "rm -rf .next .swc coverage node_modules tsconfig.tsbuildinfo",
+    "format-check": "prettier --check ./**/*.{ts,tsx}",
+    "type-check": "tsc --noEmit",
+    "test-ci": "jest --ci --verbose",
+    "quality-check": "yarn format-check && yarn lint && yarn type-check"
+  },
+  "dependencies": {
+    "@chakra-ui/react": "^2.5.5",
+    "@emotion/react": "^11.10.6",
+    "@emotion/styled": "^11.10.6",
+    "@monaco-editor/react": "^4.5.0",
+    "antlr4": "^4.12.0",
+    "framer-motion": "^10.12.2",
+    "monaco-editor": "^0.37.1",
+    "next": "13.3.0",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-hook-form": "^7.43.9",
+    "react-icons": "^4.8.0"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^14.0.0",
+    "@testing-library/user-event": "^14.4.3",
+    "@types/node": "18.15.11",
+    "@types/react": "18.0.35",
+    "@types/react-dom": "18.0.11",
+    "eslint": "8.38.0",
+    "eslint-config-next": "13.3.0",
+    "eslint-plugin-simple-import-sort": "^10.0.0",
+    "jest": "^29.5.0",
+    "jest-environment-jsdom": "^29.5.0",
+    "msw": "^1.2.1",
+    "prettier": "^2.8.7",
+    "typescript": "5.0.4"
+  },
+  "eslintConfig": {
+    "extends": "next/core-web-vitals",
+    "plugins": [
+      "simple-import-sort"
+    ],
+    "rules": {
+      "simple-import-sort/imports": "error",
+      "simple-import-sort/exports": "error"
+    },
+    "ignorePatterns": [
+      "./nlang/lang/**/*.ts"
+    ]
+  },
+  "prettier": {
+    "singleQuote": true
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
