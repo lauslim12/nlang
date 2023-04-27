@@ -35,6 +35,14 @@ const theme: ThemeOverride = {
     body: `${inter.style.fontFamily}, ${fallbackFonts}`,
     heading: `${inconsolata.style.fontFamily}, ${fallbackFonts}`,
   },
+  styles: {
+    global: {
+      '::selection': {
+        backgroundColor: '#8f94fb',
+        color: '#000',
+      },
+    },
+  },
 };
 
 export default function App({ Component, pageProps }: AppProps) {
