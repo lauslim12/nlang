@@ -112,7 +112,7 @@ test('renders all accurate external links', () => {
 
   // Using a normal `for` loop to keep it simple. Both should be the same length (assertion above proves that).
   for (let i = 0; i < links.length; i += 1) {
-    expect(links[i]).not.toBeDisabled();
+    expect(links[i]).toBeEnabled();
     expect(links[i]).toBeVisible();
     expect(links[i]).toHaveAttribute('href', expectedLinks[i].link);
     expect(links[i]).toHaveAccessibleName(expectedLinks[i].name);
@@ -135,7 +135,7 @@ test('switches color mode properly', async () => {
     name: 'Icon button to toggle the color mode',
   });
   expect(colorModeSwitchButton).toBeInTheDocument();
-  expect(colorModeSwitchButton).not.toBeDisabled();
+  expect(colorModeSwitchButton).toBeEnabled();
   expect(colorModeSwitchButton).toBeVisible();
   await user.click(colorModeSwitchButton);
 
@@ -228,7 +228,7 @@ test('integrates with the API properly', async () => {
   const { user } = renderWithProviders(<Home />);
   const textInput = screen.getByLabelText('input-nlang-expression');
   expect(textInput).toBeInTheDocument();
-  expect(textInput).not.toBeDisabled();
+  expect(textInput).toBeEnabled();
   expect(textInput).toHaveAttribute('placeholder', expect.anything());
   expect(textInput).toHaveDisplayValue('');
   await user.type(textInput, 'ADD EXPENSE 10');
@@ -236,14 +236,14 @@ test('integrates with the API properly', async () => {
   // The textarea should be rendered as well.
   const textareaResults = screen.getByLabelText('textarea-nlang-parsed');
   expect(textareaResults).toBeInTheDocument();
-  expect(textareaResults).not.toBeDisabled();
+  expect(textareaResults).toBeEnabled();
   expect(textareaResults).toHaveAttribute('readOnly');
   expect(textareaResults).toHaveValue(JSON.stringify(expectedIdle, null, 4));
 
   // Submit the request to the API.
   const submitButton = screen.getByRole('button', { name: 'Submit' });
   expect(submitButton).toBeInTheDocument();
-  expect(submitButton).not.toBeDisabled();
+  expect(submitButton).toBeEnabled();
   await user.click(submitButton);
 
   // Should throw an error in the console if the user's network is wrong.
